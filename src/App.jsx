@@ -3,7 +3,7 @@ import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
 import TaskList from './components/TaskList/TaskList'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
-import { getLocalStorage, setLocalStorage } from './utils/localStorage'
+import { supabase } from './utils/supabase'
 import { AuthContext } from './components/Auth/AuthProvider'
 
 const App = () => {
@@ -23,23 +23,38 @@ useEffect(() =>{
 
 },[])
 
-  
+  const handleLogin = async (email, password) => {
+    // 1. Check if user is Admin
+    const { data: adminData, error: adminError } = await supabase
+      .from('admin')
+      .select('*')
+      .eq('email', email)
+      .eq('password', password);
 
-  const handleLogin = (email,password)=>{
-    if(email == 'admin@example.com' && password == '123'){
+    if (adminData && adminData.length > 0) {
       setUser('admin')
-      localStorage.setItem('loggedInUser',JSON.stringify({role:'admin'}))
-    }else if(userData){
-     const employee = userData.find((e)=>email == e.email && e.password == password)
-     if(employee){
-      setUser('employee')
-      setloggedInUserData(employee)
-      localStorage.setItem('loggedInUser',JSON.stringify({role:'employee',data:employee}))
-     } 
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin', data: adminData[0] }))
+      return;
     }
-    else{
-      alert("Invalid Credinetails")
-    }      
+
+    // 2. Check if user is Employee
+    const { data: employeeData, error: employeeError } = await supabase
+      .from('employees')
+      .select('*')
+      .eq('email', email)
+      .eq('password', password);
+
+    if (employeeData && employeeData.length > 0) {
+      // Map the verified employee to the rich data stored in global Context (which includes mapped tasks)
+      const richEmployeeData = userData?.find((e) => e.email === email);
+      
+      setUser('employee')
+      setloggedInUserData(richEmployeeData || employeeData[0])
+      localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee', data: richEmployeeData || employeeData[0] }))
+      return;
+    }
+
+    alert("Invalid Credentials");
 }
 
 

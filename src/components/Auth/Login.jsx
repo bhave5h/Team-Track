@@ -16,10 +16,10 @@ const Login = ({handleLogin}) => {
 
 
   return (
-    <div className='flex h-screen w-screen items-center justify-center'>
-        <div className='border-2 border-gray-700 rounded-xl bg-[#36393b16] backdrop-blur-xl p-20 '>
+    <div className='flex h-screen w-screen items-center justify-center p-10'>
+        <div className='border-2 border-gray-700 rounded-xl bg-[#36393b16] backdrop-blur-xl p-20'>
           <div className='text-center'>
-            <img className='w-auto h-20 mx-auto mb-0' src='/logo.png' alt='Logo' />
+            <img className='md:w-100 w-80 sm:w-80 xs:w-30' src='/logo.png' alt='Logo' />
             <p className='text-2xl' > Welcome To, </p>
             <p className='font-style: italic text-3xl font-bold text-[#41BBFF]'>Team Track</p>
             <p className='text-lg'>Assign tasks, track progress, celebrate success.</p><br/>

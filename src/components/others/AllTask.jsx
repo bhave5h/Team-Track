@@ -15,13 +15,13 @@ const AllTask = () => {
      </div>
 
      <div className='h-[80%] overflow-auto' id='num'>
-       {userData.map(function(elem, idx){
+       {userData?.map(function(elem, idx){
         return <div key={idx} className='border-2 border-[#36393b16] mb-2 py-2 px-4 flex justify-between rounded'>
                   <h2 className='text-lg font-medium w-1/5 text-white'>{elem.firstName}</h2>
-                  <h3 className='text-lg font-medium w-1/5 text-blue-400 '>{elem.taskCounts.newTask}</h3>
-                  <h5 className='text-lg font-medium w-1/5 text-yellow-400' >{elem.taskCounts.active}</h5>
-                  <h5 className='text-lg font-medium w-1/5 text-green-400' >{elem.taskCounts.completed}</h5>
-                  <h5 className='text-lg font-medium w-1/5 text-red-400' >{elem.taskCounts.failed}</h5>
+                  <h3 className='text-lg font-medium w-1/5 text-blue-400 '>{elem.taskCounts?.newTask || 0}</h3>
+                  <h5 className='text-lg font-medium w-1/5 text-yellow-400' >{elem.taskCounts?.active || 0}</h5>
+                  <h5 className='text-lg font-medium w-1/5 text-green-400' >{elem.taskCounts?.completed || 0}</h5>
+                  <h5 className='text-lg font-medium w-1/5 text-red-400' >{elem.taskCounts?.failed || 0}</h5>
                </div> 
       })}
         

@@ -1,40 +1,42 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../Auth/AuthProvider'
+import { supabase } from '../../utils/supabase'
 
 const CreateTask = () => {
 
-    const [userData,setuserData] = useContext(AuthContext)
+    const [userData, setuserData] = useContext(AuthContext)
 
     const [taskTitle, setTaskTitle] = useState('')
     const [taskDescription, setTaskDescription] = useState('')
     const [taskDate, setTaskDate] = useState('')  
     const [asignTo, setAsignTo] = useState('')
     const [category, setCategory] = useState('')
+    const [priority, setPriority] = useState('medium')
 
-    const [NewTask, setNewTask] = useState({})
-
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
 
-        setNewTask({taskTitle,taskDescription,taskDate,category,active:false,newTask:true,failed:false,completed:false})
-        
-        const data = userData
-  
-        data.forEach(function(elem){
-            if(asignTo == elem.firstName){
-                elem.tasks.push(NewTask)
-                elem.taskCounts.newTask = elem.taskCounts.newTask+1
-            }
+        const { error } = await supabase.from('tasks').insert({
+            title: taskTitle,
+            description: taskDescription,
+            date: taskDate,
+            category: category,
+            status: 'newTask',
+            assigned_to: asignTo,
+            priority: priority
         })
-        setuserData(data)
-        console.log(data)
 
-    
-        setTaskTitle('')
-        setCategory('')
-        setAsignTo('')
-        setTaskDate('')
-        setTaskDescription('')
+        if (!error) {
+           alert("Task created successfully!");
+           setTaskTitle('')
+           setCategory('')
+           setAsignTo('')
+           setTaskDate('')
+           setTaskDescription('')
+           setPriority('medium')
+        } else {
+           alert("Error creating task: " + error.message)
+        }
     }
 
     return (
@@ -70,12 +72,29 @@ const CreateTask = () => {
 
             <div>            
                 <h3 className='text-sm text-gray-300 mb-0.5'>Assign to</h3>
-                <input 
+                <select 
                     value={asignTo} 
                     onChange={(e)=>{
                     setAsignTo(e.target.value)
                 }}
-                className='text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] mb-4 ' type='text' placeholder='employee'></input>
+                className='text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] mb-4 text-white'>
+                    <option value="" disabled className='bg-[#1c1c1c] text-gray-400'>Select Employee...</option>
+                    {userData?.map((emp, idx) => (
+                        <option key={idx} value={emp.firstName} className='bg-[#1c1c1c]'>{emp.firstName}</option>
+                    ))}
+                </select>
+            </div>
+
+            <div>
+                <h3 className='text-sm text-gray-300 mb-0.5'>Priority</h3>
+                <select 
+                    value={priority} 
+                    onChange={(e) => setPriority(e.target.value)}
+                    className='text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] mb-4 text-white'>
+                    <option value="low" className='bg-[#1c1c1c]'>Low</option>
+                    <option value="medium" className='bg-[#1c1c1c]'>Medium</option>
+                    <option value="high" className='bg-[#1c1c1c]'>High</option>
+                </select>
             </div>
 
             <div>

@@ -1,298 +1,258 @@
-// localStorage.clear()
-
 const employees = [
   {
     "id": 1,
     "firstName": "Bhavesh Chawre",
     "email": "Bhavesh@bigtopsocial.com",
-    "password": "123",
-    "taskCounts": {
-      "active": 1,
-      "newTask": 1,
-      "completed": 2,
-      "failed": 0
-    },
-    "tasks": [
-      {
-        "taskTitle": "Prepare Report",
-        "taskDescription": "Create the monthly performance report",
-        "taskDate": "2025-09-10",
-        "category": "Reporting",
-        "active": false,
-        "newTask": true,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Team Meeting",
-        "taskDescription": "Attend weekly sync with team",
-        "taskDate": "2025-09-12",
-        "category": "Meeting",
-        "active": false,
-        "newTask": false,
-        "completed": true,
-        "failed": false
-      },
-      {
-        "taskTitle": "Client Follow-up",
-        "taskDescription": "Send email to client about updates",
-        "taskDate": "2025-09-14",
-        "category": "Communication",
-        "active": true,
-        "newTask": false,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Bug Fix",
-        "taskDescription": "Fix issue in login system",
-        "taskDate": "2025-09-15",
-        "category": "Development",
-        "active": false,
-        "newTask": false,
-        "completed": true,
-        "failed": false
-      }
-    ]
+    "password": "123"
   },
   {
     "id": 2,
     "firstName": "Shobhit",
     "email": "Shobhit@bigtopsocial.com",
-    "password": "123",
-    "taskCounts": {
-      "active": 2,
-      "newTask": 1,
-      "completed": 1,
-      "failed": 1
-    },
-    "tasks": [
-      {
-        "taskTitle": "Write Documentation",
-        "taskDescription": "Document new API endpoints",
-        "taskDate": "2025-09-10",
-        "category": "Documentation",
-        "active": false,
-        "newTask": false,
-        "completed": true,
-        "failed": false
-      },
-      {
-        "taskTitle": "Design Review",
-        "taskDescription": "Review UI design for dashboard",
-        "taskDate": "2025-09-11",
-        "category": "Design",
-        "active": false,
-        "newTask": true,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Deploy App",
-        "taskDescription": "Deploy new version to staging server",
-        "taskDate": "2025-09-14",
-        "category": "Deployment",
-        "active": true,
-        "newTask": false,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "QA Testing",
-        "taskDescription": "Test new features on staging",
-        "taskDate": "2025-09-15",
-        "category": "Testing",
-        "active": false,
-        "newTask": false,
-        "completed": false,
-        "failed": true
-      }
-    ]
+    "password": "123"
   },
   {
     "id": 3,
     "firstName": "Sumit Kumbhalkar",
     "email": "Sumit@bigtopsocial.com",
-    "password": "123",
-    "taskCounts": {
-      "active": 2,
-      "newTask": 1,
-      "completed": 2,
-      "failed": 1
-    },
-    "tasks": [
-      {
-        "taskTitle": "Security Check",
-        "taskDescription": "Run vulnerability scans",
-        "taskDate": "2025-09-09",
-        "category": "Security",
-        "active": false,
-        "newTask": false,
-        "completed": true,
-        "failed": false
-      },
-      {
-        "taskTitle": "Code Optimization",
-        "taskDescription": "Improve query performance",
-        "taskDate": "2025-09-12",
-        "category": "Development",
-        "active": false,
-        "newTask": true,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Team Training",
-        "taskDescription": "Conduct workshop on Git workflow",
-        "taskDate": "2025-09-13",
-        "category": "Training",
-        "active": false,
-        "newTask": false,
-        "completed": false,
-        "failed": true
-      },
-      {
-        "taskTitle": "UI Testing",
-        "taskDescription": "Test UI components across browsers",
-        "taskDate": "2025-09-15",
-        "category": "Testing",
-        "active": true,
-        "newTask": false,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Data Cleanup",
-        "taskDescription": "Remove redundant records from DB",
-        "taskDate": "2025-09-16",
-        "category": "Maintenance",
-        "active": false,
-        "newTask": false,
-        "completed": true,
-        "failed": false
-      },
-      {
-        "taskTitle": "Feature Planning",
-        "taskDescription": "Plan Q4 feature roadmap",
-        "taskDate": "2025-09-18",
-        "category": "Planning",
-        "active": true,
-        "newTask": false,
-        "completed": false,
-        "failed": false
-      }
-    ]
+    "password": "123"
   },
   {
     "id": 4,
     "firstName": "vrundita Jamkar",
     "email": "vrundita@bigtopsocial.com",
-    "password": "123",
-    "taskCounts": {
-      "active": 1,
-      "newTask": 1,
-      "completed": 1,
-      "failed": 1
-    },
-    "tasks": [
-      {
-        "taskTitle": "Market Research",
-        "taskDescription": "Analyze competitors’ strategies",
-        "taskDate": "2025-09-12",
-        "category": "Research",
-        "active": false,
-        "newTask": true,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Presentation Prep",
-        "taskDescription": "Prepare slides for client pitch",
-        "taskDate": "2025-09-13",
-        "category": "Presentation",
-        "active": true,
-        "newTask": false,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Invoice Processing",
-        "taskDescription": "Process vendor invoices",
-        "taskDate": "2025-09-14",
-        "category": "Finance",
-        "active": false,
-        "newTask": false,
-        "completed": true,
-        "failed": false
-      },
-      {
-        "taskTitle": "Error Logs",
-        "taskDescription": "Check application logs for errors",
-        "taskDate": "2025-09-15",
-        "category": "Maintenance",
-        "active": false,
-        "newTask": false,
-        "completed": false,
-        "failed": true
-      }
-    ]
+    "password": "123"
   },
   {
     "id": 5,
     "firstName": "Harsh",
     "email": "harsh@bigtopsocial.com",
-    "password": "123",
-    "taskCounts": {
-      "active": 2,
-      "newTask": 1,
-      "completed": 0,
-      "failed": 1
-    },
-    "tasks": [
-      {
-        "taskTitle": "Server Backup",
-        "taskDescription": "Run full server backup",
-        "taskDate": "2025-09-10",
-        "category": "IT",
-        "active": false,
-        "newTask": true,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Team Lunch",
-        "taskDescription": "Arrange team bonding lunch",
-        "taskDate": "2025-09-13",
-        "category": "HR",
-        "active": true,
-        "newTask": false,
-        "completed": false,
-        "failed": false
-      },
-      {
-        "taskTitle": "Bug Triage",
-        "taskDescription": "Categorize new issues",
-        "taskDate": "2025-09-14",
-        "category": "Development",
-        "active": false,
-        "newTask": false,
-        "completed": false,
-        "failed": true
-      },
-      {
-        "taskTitle": "Update Dependencies",
-        "taskDescription": "Upgrade project libraries",
-        "taskDate": "2025-09-15",
-        "category": "Development",
-        "active": true,
-        "newTask": false,
-        "completed": false,
-        "failed": false
-      }
-    ]
-  },
+    "password": "123"
+  }
 ];
 
+const tasks = [
+  {
+    "id": 1,
+    "title": "Prepare Report",
+    "description": "Create the monthly performance report",
+    "date": "2025-09-10",
+    "category": "Reporting",
+    "status": "newTask",
+    "assigned_to": "Bhavesh Chawre",
+    "priority": "medium"
+  },
+  {
+    "id": 2,
+    "title": "Team Meeting",
+    "description": "Attend weekly sync with team",
+    "date": "2025-09-12",
+    "category": "Meeting",
+    "status": "completed",
+    "assigned_to": "Bhavesh Chawre",
+    "priority": "medium"
+  },
+  {
+    "id": 3,
+    "title": "Client Follow-up",
+    "description": "Send email to client about updates",
+    "date": "2025-09-14",
+    "category": "Communication",
+    "status": "active",
+    "assigned_to": "Bhavesh Chawre",
+    "priority": "medium"
+  },
+  {
+    "id": 4,
+    "title": "Bug Fix",
+    "description": "Fix issue in login system",
+    "date": "2025-09-15",
+    "category": "Development",
+    "status": "completed",
+    "assigned_to": "Bhavesh Chawre",
+    "priority": "medium"
+  },
+  {
+    "id": 5,
+    "title": "Write Documentation",
+    "description": "Document new API endpoints",
+    "date": "2025-09-10",
+    "category": "Documentation",
+    "status": "completed",
+    "assigned_to": "Shobhit",
+    "priority": "medium"
+  },
+  {
+    "id": 6,
+    "title": "Design Review",
+    "description": "Review UI design for dashboard",
+    "date": "2025-09-11",
+    "category": "Design",
+    "status": "newTask",
+    "assigned_to": "Shobhit",
+    "priority": "medium"
+  },
+  {
+    "id": 7,
+    "title": "Deploy App",
+    "description": "Deploy new version to staging server",
+    "date": "2025-09-14",
+    "category": "Deployment",
+    "status": "active",
+    "assigned_to": "Shobhit",
+    "priority": "medium"
+  },
+  {
+    "id": 8,
+    "title": "QA Testing",
+    "description": "Test new features on staging",
+    "date": "2025-09-15",
+    "category": "Testing",
+    "status": "failed",
+    "assigned_to": "Shobhit",
+    "priority": "medium"
+  },
+  {
+    "id": 9,
+    "title": "Security Check",
+    "description": "Run vulnerability scans",
+    "date": "2025-09-09",
+    "category": "Security",
+    "status": "completed",
+    "assigned_to": "Sumit Kumbhalkar",
+    "priority": "medium"
+  },
+  {
+    "id": 10,
+    "title": "Code Optimization",
+    "description": "Improve query performance",
+    "date": "2025-09-12",
+    "category": "Development",
+    "status": "newTask",
+    "assigned_to": "Sumit Kumbhalkar",
+    "priority": "medium"
+  },
+  {
+    "id": 11,
+    "title": "Team Training",
+    "description": "Conduct workshop on Git workflow",
+    "date": "2025-09-13",
+    "category": "Training",
+    "status": "failed",
+    "assigned_to": "Sumit Kumbhalkar",
+    "priority": "medium"
+  },
+  {
+    "id": 12,
+    "title": "UI Testing",
+    "description": "Test UI components across browsers",
+    "date": "2025-09-15",
+    "category": "Testing",
+    "status": "active",
+    "assigned_to": "Sumit Kumbhalkar",
+    "priority": "medium"
+  },
+  {
+    "id": 13,
+    "title": "Data Cleanup",
+    "description": "Remove redundant records from DB",
+    "date": "2025-09-16",
+    "category": "Maintenance",
+    "status": "completed",
+    "assigned_to": "Sumit Kumbhalkar",
+    "priority": "medium"
+  },
+  {
+    "id": 14,
+    "title": "Feature Planning",
+    "description": "Plan Q4 feature roadmap",
+    "date": "2025-09-18",
+    "category": "Planning",
+    "status": "active",
+    "assigned_to": "Sumit Kumbhalkar",
+    "priority": "medium"
+  },
+  {
+    "id": 15,
+    "title": "Market Research",
+    "description": "Analyze competitors’ strategies",
+    "date": "2025-09-12",
+    "category": "Research",
+    "status": "newTask",
+    "assigned_to": "vrundita Jamkar",
+    "priority": "medium"
+  },
+  {
+    "id": 16,
+    "title": "Presentation Prep",
+    "description": "Prepare slides for client pitch",
+    "date": "2025-09-13",
+    "category": "Presentation",
+    "status": "active",
+    "assigned_to": "vrundita Jamkar",
+    "priority": "medium"
+  },
+  {
+    "id": 17,
+    "title": "Invoice Processing",
+    "description": "Process vendor invoices",
+    "date": "2025-09-14",
+    "category": "Finance",
+    "status": "completed",
+    "assigned_to": "vrundita Jamkar",
+    "priority": "medium"
+  },
+  {
+    "id": 18,
+    "title": "Error Logs",
+    "description": "Check application logs for errors",
+    "date": "2025-09-15",
+    "category": "Maintenance",
+    "status": "failed",
+    "assigned_to": "vrundita Jamkar",
+    "priority": "medium"
+  },
+  {
+    "id": 19,
+    "title": "Server Backup",
+    "description": "Run full server backup",
+    "date": "2025-09-10",
+    "category": "IT",
+    "status": "newTask",
+    "assigned_to": "Harsh",
+    "priority": "medium"
+  },
+  {
+    "id": 20,
+    "title": "Team Lunch",
+    "description": "Arrange team bonding lunch",
+    "date": "2025-09-13",
+    "category": "HR",
+    "status": "active",
+    "assigned_to": "Harsh",
+    "priority": "medium"
+  },
+  {
+    "id": 21,
+    "title": "Bug Triage",
+    "description": "Categorize new issues",
+    "date": "2025-09-14",
+    "category": "Development",
+    "status": "failed",
+    "assigned_to": "Harsh",
+    "priority": "medium"
+  },
+  {
+    "id": 22,
+    "title": "Update Dependencies",
+    "description": "Upgrade project libraries",
+    "date": "2025-09-15",
+    "category": "Development",
+    "status": "active",
+    "assigned_to": "Harsh",
+    "priority": "medium"
+  }
+];
 
 const admin = [
   {
@@ -302,18 +262,3 @@ const admin = [
     "password": "123"
   }
 ];
-
-
-
-export const setLocalStorage = ()=>{
-    localStorage.setItem('employees',JSON.stringify(employees))
-    localStorage.setItem('admin',JSON.stringify(admin))
-}
-
-export const getLocalStorage = ()=>{
-    const employees = JSON.parse(localStorage.getItem('employees'))
-    const admin = JSON.parse(localStorage.getItem('admin'))
-
-    return {employees,admin}
-
-}
