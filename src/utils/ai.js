@@ -15,10 +15,10 @@ export const getTaskSummary = async (tasks, role) => {
       
   Analyze these tasks.
   Return:
+  - Short actionable summary
   - High priority tasks
   - Who is working on what
   - Who is behind
-  - Short actionable summary
   
   Return plain text.`;
     } else if (role === 'employee') {

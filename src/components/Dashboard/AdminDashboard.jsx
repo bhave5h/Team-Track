@@ -16,7 +16,6 @@ const AdminDashboard = (props) => {
     setLoadingAI(true)
     setAiContent('')
 
-    // 1. Fetch entire company workload
     const { data: allTasks, error } = await supabase.from('tasks').select('*')
     
     if (error) {
@@ -25,7 +24,6 @@ const AdminDashboard = (props) => {
       return;
     }
 
-    // 2. Sent to AI for macro-analysis
     const summary = await getTaskSummary(allTasks, 'admin')
     
     setAiContent(summary)
@@ -33,28 +31,40 @@ const AdminDashboard = (props) => {
   }
 
   return (
-    <div className='h-screen w-full p-7 overflow-y-auto'>
-      <Header changeUser={props.changeUser} data={{firstName: 'Admin'}} />
-      
-      <div className="flex justify-end w-full mb-4">
-          <button 
-            onClick={handleGenerateSummary}
-            className="flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/30 transition-all hover:-translate-y-1"
-          >
-             ✨ Generate Team Summary
-          </button>
+    <div className='min-h-screen w-full font-sans'>
+      <div className='max-w-[1200px] mx-auto p-8'>
+        <Header changeUser={props.changeUser} data={{firstName: 'Admin'}} />
+        
+        <div className="flex justify-start w-full mb-8">
+            <button 
+              onClick={handleGenerateSummary}
+              className="relative inline-flex h-12 overflow-hidden rounded-lg p-[2px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 ">
+              <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] hover:cursor-pointer" />
+              <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-slate-950 px-3 py-1 text-bold font-medium text-white backdrop-blur-3xl  hover:scale-95 transition-all duration-800 ">
+                AI Insights
+              </span>
+            </button>
+            
+        </div>
+
+        <div className="mb-12">
+          <h2 className="text-[22px] font-bold tracking-tight-xs mb-4 text-notion-black dark:text-notion-white">Create New Task</h2>
+          <CreateTask />
+        </div>
+
+        <div>
+          <h2 className="text-[22px] font-bold tracking-tight-xs mb-4 text-notion-black dark:text-notion-white">All Tasks</h2>
+          <AllTask/>
+        </div>
+
+        <AIModal 
+          isOpen={isModalOpen} 
+          onClose={() => setIsModalOpen(false)} 
+          loading={loadingAI} 
+          content={aiContent} 
+          title="Team Overview" 
+        />
       </div>
-
-      <CreateTask />
-      <AllTask/>
-
-      <AIModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        loading={loadingAI} 
-        content={aiContent} 
-        title="Admin Team Overview" 
-      />
     </div>
   )
 }

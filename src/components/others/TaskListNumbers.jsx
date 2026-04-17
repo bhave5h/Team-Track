@@ -2,26 +2,26 @@ import React from 'react'
 
 const TaskListNumbers = ({data}) => {
   return (
-    <div className='flex mt-10 justify-between gap-5 screen'>
+    <div className='grid grid-cols-2 md:grid-cols-4 gap-6 mb-8'>
       
-      <div className='rounded-xl w-[45%] py-6 px-9 bg-[#41bdff42]'>
-        <h2 className='text-3xl font-semibold'>{data.taskCounts.newTask}</h2>
-        <h3 className='text-xl font-medium'>New Task</h3>
+      <div className='rounded-[12px] p-6 bg-notion-white border border-[rgba(0,0,0,0.1)] shadow-soft'>
+        <h2 className='text-[40px] font-bold tracking-tight-lg text-notion-black leading-none mb-2'>{data.taskCounts.newTask}</h2>
+        <h3 className='text-[16px] font-medium text-notion-gray-500'>New Tasks</h3>
       </div>
       
-      <div className='rounded-xl w-[45%] py-6 px-9 bg-[#6aff4154]'>
-        <h2 className='text-3xl font-semibold'>{data.taskCounts.completed}</h2>
-        <h3 className='text-xl font-medium'>Completed Task</h3>
+      <div className='rounded-[12px] p-6 bg-notion-white border border-[rgba(0,0,0,0.1)] shadow-soft'>
+        <h2 className='text-[40px] font-bold tracking-tight-lg text-notion-black leading-none mb-2'>{data.taskCounts.completed}</h2>
+        <h3 className='text-[16px] font-medium text-notion-gray-500'>Completed Tasks</h3>
       </div>
       
-      <div className='rounded-xl w-[45%] py-6 px-9 bg-[#ff920471]'>
-        <h2 className='text-3xl font-semibold'>{data.taskCounts.active}</h2>
-        <h3 className='text-xl font-medium'>Active Tasks</h3>
+      <div className='rounded-[12px] p-6 bg-notion-white border border-[rgba(0,0,0,0.1)] shadow-soft'>
+        <h2 className='text-[40px] font-bold tracking-tight-lg text-notion-black leading-none mb-2'>{data.taskCounts.active}</h2>
+        <h3 className='text-[16px] font-medium text-notion-gray-500'>Active Tasks</h3>
       </div>
       
-      <div className='rounded-xl w-[45%] py-6 px-9 bg-[#ff040455]'>
-        <h2 className='text-3xl font-semibold'>{data.taskCounts.failed}</h2>
-        <h3 className='text-xl font-medium'>Failed Task</h3>
+      <div className='rounded-[12px] p-6 bg-notion-white border border-[rgba(0,0,0,0.1)] shadow-soft'>
+        <h2 className='text-[40px] font-bold tracking-tight-lg text-notion-black leading-none mb-2'>{data.taskCounts.failed}</h2>
+        <h3 className='text-[16px] font-medium text-notion-gray-500'>Failed Tasks</h3>
       </div>
     </div>
   )

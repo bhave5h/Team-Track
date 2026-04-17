@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Login from './components/Auth/Login'
 import EmployeeDashboard from './components/Dashboard/EmployeeDashboard'
-import TaskList from './components/TaskList/TaskList'
 import AdminDashboard from './components/Dashboard/AdminDashboard'
 import { supabase } from './utils/supabase'
 import { AuthContext } from './components/Auth/AuthProvider'
+import { Toaster } from './components/ui/toast'
+import { toast } from 'sonner'
 
 const App = () => {
 
@@ -34,6 +35,9 @@ useEffect(() =>{
     if (adminData && adminData.length > 0) {
       setUser('admin')
       localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin', data: adminData[0] }))
+      toast.success("Login Successful", {
+        description: "Welcome back to Team Track",
+      });
       return;
     }
 
@@ -51,19 +55,23 @@ useEffect(() =>{
       setUser('employee')
       setloggedInUserData(richEmployeeData || employeeData[0])
       localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee', data: richEmployeeData || employeeData[0] }))
+      toast.success("Login Successful", {
+        description: "Welcome back to Team Track",
+      });
       return;
     }
 
-    alert("Invalid Credentials");
+    toast.error("Login Failed", {
+      description: "Invalid Credentials",
+    });
 }
 
 
   return (
     <>
+      <Toaster />
       {!user ? <Login handleLogin={handleLogin} />: ''}
       {user == 'admin' ? <AdminDashboard changeUser={setUser}/> : (user == 'employee' ? <EmployeeDashboard changeUser={setUser} data={loggedInUserData}/> : null) }
-      {/* < EmployeeDashboard /> */}
-      {/* <AdminDashboard /> */}
     </>
   )
 }
